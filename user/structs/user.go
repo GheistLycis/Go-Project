@@ -1,5 +1,7 @@
 package user_structs
 
+import "time"
+
 type Gender string
 
 const (
@@ -9,6 +11,9 @@ const (
 )
 
 type User struct {
-	CreateUser
-	ID int
+	BirthDate  time.Time
+	Gender     Gender
+	ID         int
+	Name       string
+	Profession string
 }

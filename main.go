@@ -5,10 +5,12 @@ import (
 	user_router "github.com/go-project/user/router"
 )
 
-func main() {
-	app := gin.Default()
+var app = gin.Default()
 
+func init() {
 	user_router.SetRouter(app)
+}
 
+func main() {
 	app.Run(":3000")
 }
