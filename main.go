@@ -1,16 +1,13 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	user_router "github.com/go-project/user/router"
+	"github.com/go-project/app"
 )
 
-var app = gin.Default()
-
 func init() {
-	user_router.SetRouter(app)
+	app.Setup()
 }
 
 func main() {
-	app.Run(":3000")
+	app.Init()
 }
