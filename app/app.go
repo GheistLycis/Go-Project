@@ -4,13 +4,13 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	user_router "github.com/go-project/user/router"
+	user_controller "github.com/go-project/app/user/controller"
 )
 
 var server *gin.Engine
 
 func initRouters() {
-	user_router.SetRouter(server)
+	user_controller.SetRouter(server)
 }
 
 func handleErrors(c *gin.Context) {
@@ -32,6 +32,5 @@ func Setup() {
 }
 
 func Init() {
-
 	server.Run(":3000")
 }
