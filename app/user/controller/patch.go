@@ -10,7 +10,7 @@ import (
 	user_structs "github.com/go-project/app/user/structs"
 )
 
-func handlePatch(c *gin.Context) {
+func patch(c *gin.Context) {
 	payload := user_structs.PatchUser{}
 	ID := c.Param("id")
 

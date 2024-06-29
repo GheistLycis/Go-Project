@@ -9,7 +9,7 @@ import (
 	user_structs "github.com/go-project/app/user/structs"
 )
 
-func handleCreate(c *gin.Context) {
+func post(c *gin.Context) {
 	payload := user_structs.CreateUser{}
 
 	if err := c.ShouldBindJSON(&payload); err != nil {

@@ -8,7 +8,7 @@ import (
 	user_service "github.com/go-project/app/user/service"
 )
 
-func handleGet(c *gin.Context) {
+func get(c *gin.Context) {
 	ID := c.Param("id")
 
 	if IDint, err := strconv.Atoi(ID); err != nil {
@@ -20,7 +20,7 @@ func handleGet(c *gin.Context) {
 	}
 }
 
-func handleList(c *gin.Context) {
+func list(c *gin.Context) {
 	users := user_service.List()
 
 	c.JSON(200, users)

@@ -5,9 +5,9 @@ import (
 )
 
 func SetRouter(server *gin.Engine) {
-	server.POST("user", handleCreate)
-	server.GET("user/:id", handleGet)
-	server.GET("user", handleList)
-	server.PATCH("user/:id", handlePatch)
-	server.DELETE("user/:id", handleDelete)
+	server.POST("user", post)
+	server.GET("user/:id", get)
+	server.GET("user", list)
+	server.PATCH("user/:id", patch)
+	server.DELETE("user/:id", delete)
 }

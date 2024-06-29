@@ -8,7 +8,7 @@ import (
 	user_service "github.com/go-project/app/user/service"
 )
 
-func handleDelete(c *gin.Context) {
+func delete(c *gin.Context) {
 	ID := c.Param("id")
 
 	if IDint, err := strconv.Atoi(ID); err != nil {
