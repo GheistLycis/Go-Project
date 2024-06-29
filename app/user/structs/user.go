@@ -1,6 +1,10 @@
 package user_structs
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Gender string
 
@@ -11,9 +15,10 @@ const (
 )
 
 type User struct {
+	gorm.Model
 	BirthDate  time.Time
 	Gender     Gender
-	ID         int
+	GovId      uint64 `gorm:"primaryKey"`
 	Name       string
 	Profession string
 }
