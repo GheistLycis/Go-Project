@@ -16,6 +16,6 @@ func delete(c *gin.Context) {
 	} else {
 		user := service.Delete(IDint)
 
-		c.JSON(200, user)
+		c.JSON(http.StatusOK, user)
 	}
 }

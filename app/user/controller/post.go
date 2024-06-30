@@ -28,7 +28,12 @@ func post(c *gin.Context) {
 		return
 	}
 
-	user := service.Create(payload)
+	user, err := service.Create(payload)
 
-	c.JSON(200, user)
+	if err != nil {
+		c.JSON(http.StatusUnprocessableEntity, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
 }

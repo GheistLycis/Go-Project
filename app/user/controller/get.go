@@ -16,12 +16,12 @@ func get(c *gin.Context) {
 	} else {
 		user := service.Get(IDint)
 
-		c.JSON(200, user)
+		c.JSON(http.StatusOK, user)
 	}
 }
 
 func list(c *gin.Context) {
 	users := service.List()
 
-	c.JSON(200, users)
+	c.JSON(http.StatusOK, users)
 }

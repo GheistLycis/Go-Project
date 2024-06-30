@@ -35,6 +35,6 @@ func patch(c *gin.Context) {
 	} else {
 		user := service.Patch(payload, IDint)
 
-		c.JSON(200, user)
+		c.JSON(http.StatusOK, user)
 	}
 }
