@@ -8,6 +8,19 @@ import (
 	usercontroller "github.com/go-project/app/user/controller"
 )
 
+/*
+Init creates the server, set its routers and handlers and then runs it.
+
+-port: the server port.
+*/
+func Init(port int) {
+	server := gin.Default()
+
+	initRouters(server)
+	initHandlers(server)
+	server.Run(fmt.Sprintf(":%d", port))
+}
+
 func initRouters(server *gin.Engine) {
 	usercontroller.SetRouter(server)
 }
@@ -24,17 +37,4 @@ func handleErrors(c *gin.Context) {
 
 		c.JSON(http.StatusInternalServerError, err.Error())
 	}
-}
-
-/*
-Init creates the server, set its routers and handlers and then runs it.
-
--port: the server port.
-*/
-func Init(port int) {
-	server := gin.Default()
-
-	initRouters(server)
-	initHandlers(server)
-	server.Run(fmt.Sprintf(":%d", port))
 }

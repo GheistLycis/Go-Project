@@ -13,6 +13,21 @@ import (
 
 var DB *gorm.DB
 
+/*
+Init generates the DSN string from local .env and connects to the DB.
+
+-doMigration: whether to migrate every mapped model.
+*/
+func Init(doMigration bool) {
+	dsn := getDSN()
+
+	DB = connect(dsn)
+
+	if doMigration {
+		migrate(DB)
+	}
+}
+
 func getDSN() string {
 	if err := godotenv.Load(); err != nil {
 		log.Fatalf("Error loading .env file: %v", err)
@@ -47,20 +62,5 @@ func migrate(db *gorm.DB) {
 
 	if err != nil {
 		log.Fatalf("Failed to migrate database: %v", err)
-	}
-}
-
-/*
-Init generates the DSN string from local .env and connects to the DB.
-
--doMigration: whether to migrate every mapped model.
-*/
-func Init(doMigration bool) {
-	dsn := getDSN()
-
-	DB = connect(dsn)
-
-	if doMigration {
-		migrate(DB)
 	}
 }
