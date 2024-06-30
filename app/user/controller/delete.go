@@ -1,11 +1,11 @@
-package user_controller
+package controller
 
 import (
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	user_service "github.com/go-project/app/user/service"
+	service "github.com/go-project/app/user/service"
 )
 
 func delete(c *gin.Context) {
@@ -14,7 +14,7 @@ func delete(c *gin.Context) {
 	if IDint, err := strconv.Atoi(ID); err != nil {
 		c.JSON(http.StatusBadRequest, "ID inválido")
 	} else {
-		user := user_service.Delete(IDint)
+		user := service.Delete(IDint)
 
 		c.JSON(200, user)
 	}

@@ -1,9 +1,12 @@
-package user_service
+package service
 
 import (
-	user_structs "github.com/go-project/app/user/structs"
+	structs "github.com/go-project/app/user/structs"
 )
 
-func List() []user_structs.ListUser {
-	return []user_structs.ListUser{}
+/*
+List is the usecase for listing users from the database.
+*/
+func List() []structs.ListUser {
+	return []structs.ListUser{}
 }

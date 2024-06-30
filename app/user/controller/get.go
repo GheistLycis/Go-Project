@@ -1,11 +1,11 @@
-package user_controller
+package controller
 
 import (
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	user_service "github.com/go-project/app/user/service"
+	service "github.com/go-project/app/user/service"
 )
 
 func get(c *gin.Context) {
@@ -14,14 +14,14 @@ func get(c *gin.Context) {
 	if IDint, err := strconv.Atoi(ID); err != nil {
 		c.JSON(http.StatusBadRequest, "ID inválido")
 	} else {
-		user := user_service.Get(IDint)
+		user := service.Get(IDint)
 
 		c.JSON(200, user)
 	}
 }
 
 func list(c *gin.Context) {
-	users := user_service.List()
+	users := service.List()
 
 	c.JSON(200, users)
 }

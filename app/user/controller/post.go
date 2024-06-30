@@ -1,16 +1,16 @@
-package user_controller
+package controller
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
-	user_service "github.com/go-project/app/user/service"
-	user_structs "github.com/go-project/app/user/structs"
+	service "github.com/go-project/app/user/service"
+	structs "github.com/go-project/app/user/structs"
 )
 
 func post(c *gin.Context) {
-	payload := user_structs.CreateUser{}
+	payload := structs.CreateUser{}
 
 	if err := c.ShouldBindJSON(&payload); err != nil {
 		if errors, ok := err.(validator.ValidationErrors); ok {
@@ -28,7 +28,7 @@ func post(c *gin.Context) {
 		return
 	}
 
-	user := user_service.Create(payload)
+	user := service.Create(payload)
 
 	c.JSON(200, user)
 }

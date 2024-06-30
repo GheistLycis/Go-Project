@@ -1,9 +1,12 @@
-package user_service
+package service
 
 import (
-	user_structs "github.com/go-project/app/user/structs"
+	structs "github.com/go-project/app/user/structs"
 )
 
-func Get(ID int) user_structs.GetUser {
-	return user_structs.GetUser{}
+/*
+Get is the usecase for finding an user in the database.
+*/
+func Get(ID int) structs.GetUser {
+	return structs.GetUser{}
 }

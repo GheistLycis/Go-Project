@@ -1,7 +1,10 @@
-package user_service
+package service
 
-import user_structs "github.com/go-project/app/user/structs"
+import structs "github.com/go-project/app/user/structs"
 
-func Delete(ID int) user_structs.GetUser {
-	return user_structs.GetUser{}
+/*
+Delete is the usecase for soft-deleting an user in the database.
+*/
+func Delete(ID int) structs.GetUser {
+	return structs.GetUser{}
 }

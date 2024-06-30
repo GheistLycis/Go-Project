@@ -1,7 +1,10 @@
-package user_service
+package service
 
-import user_structs "github.com/go-project/app/user/structs"
+import structs "github.com/go-project/app/user/structs"
 
-func Create(payload user_structs.CreateUser) user_structs.GetUser {
-	return user_structs.GetUser{}
+/*
+Create is the usecase for inserting an user into the database.
+*/
+func Create(payload structs.CreateUser) structs.GetUser {
+	return structs.GetUser{}
 }

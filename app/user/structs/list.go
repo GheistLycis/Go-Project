@@ -1,7 +1,10 @@
-package user_structs
+package structs
 
 import "time"
 
+/*
+ListUser is the API response payload for returning multiple users.
+*/
 type ListUser struct {
 	BirthDate  time.Time `json:"birthDate" binding:"required"`
 	Gender     Gender    `json:"gender" binding:"required"`

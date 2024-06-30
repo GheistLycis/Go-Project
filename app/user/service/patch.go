@@ -1,9 +1,12 @@
-package user_service
+package service
 
 import (
-	user_structs "github.com/go-project/app/user/structs"
+	structs "github.com/go-project/app/user/structs"
 )
 
-func Patch(payload user_structs.PatchUser, ID int) user_structs.GetUser {
-	return user_structs.GetUser{}
+/*
+Patch is the usecase for patching an user in the database.
+*/
+func Patch(payload structs.PatchUser, ID int) structs.GetUser {
+	return structs.GetUser{}
 }

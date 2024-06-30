@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	user_structs "github.com/go-project/app/user/structs"
+	structs "github.com/go-project/app/user/structs"
 	godotenv "github.com/joho/godotenv"
 	postgres "gorm.io/driver/postgres"
 	gorm "gorm.io/gorm"
@@ -42,18 +42,25 @@ func connect(dsn string) *gorm.DB {
 	return db
 }
 
-func migrate(database *gorm.DB) {
-	err := database.AutoMigrate(&user_structs.User{})
+func migrate(db *gorm.DB) {
+	err := db.AutoMigrate(&structs.User{})
 
 	if err != nil {
 		log.Fatalf("Failed to migrate database: %v", err)
 	}
 }
 
-func Init() {
+/*
+Init generates the DSN string from local .env and connects to the DB.
+
+-doMigration: whether to migrate every mapped model.
+*/
+func Init(doMigration bool) {
 	dsn := getDSN()
 
 	DB = connect(dsn)
 
-	migrate(DB)
+	if doMigration {
+		migrate(DB)
+	}
 }

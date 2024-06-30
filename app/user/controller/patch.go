@@ -1,4 +1,4 @@
-package user_controller
+package controller
 
 import (
 	"net/http"
@@ -6,12 +6,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
-	user_service "github.com/go-project/app/user/service"
-	user_structs "github.com/go-project/app/user/structs"
+	service "github.com/go-project/app/user/service"
+	structs "github.com/go-project/app/user/structs"
 )
 
 func patch(c *gin.Context) {
-	payload := user_structs.PatchUser{}
+	payload := structs.PatchUser{}
 	ID := c.Param("id")
 
 	if err := c.ShouldBindJSON(&payload); err != nil {
@@ -33,7 +33,7 @@ func patch(c *gin.Context) {
 	if IDint, err := strconv.Atoi(ID); err != nil {
 		c.JSON(http.StatusBadRequest, "ID inválido")
 	} else {
-		user := user_service.Patch(payload, IDint)
+		user := service.Patch(payload, IDint)
 
 		c.JSON(200, user)
 	}

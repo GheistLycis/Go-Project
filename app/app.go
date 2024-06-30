@@ -1,16 +1,19 @@
 package app
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	user_controller "github.com/go-project/app/user/controller"
+	usercontroller "github.com/go-project/app/user/controller"
 )
 
-var server *gin.Engine
+func initRouters(server *gin.Engine) {
+	usercontroller.SetRouter(server)
+}
 
-func initRouters() {
-	user_controller.SetRouter(server)
+func initHandlers(server *gin.Engine) {
+	server.Use(handleErrors)
 }
 
 func handleErrors(c *gin.Context) {
@@ -23,14 +26,15 @@ func handleErrors(c *gin.Context) {
 	}
 }
 
-func Setup() {
-	server = gin.Default()
+/*
+Init creates the server, set its routers and handlers and then runs it.
 
-	initRouters()
+-port: the server port.
+*/
+func Init(port int) {
+	server := gin.Default()
 
-	server.Use(handleErrors)
-}
-
-func Init() {
-	server.Run(":3000")
+	initRouters(server)
+	initHandlers(server)
+	server.Run(fmt.Sprintf(":%d", port))
 }

@@ -6,10 +6,9 @@ import (
 )
 
 func init() {
-	database.Init()
-	app.Setup()
+	database.Init(true)
 }
 
 func main() {
-	app.Init()
+	app.Init(3000)
 }
