@@ -1,8 +1,8 @@
 package service
 
 import (
-	structs "github.com/go-project/app/user/structs"
-	db "github.com/go-project/database"
+	"github.com/go-project/app/user/structs"
+	"github.com/go-project/database"
 )
 
 /*
@@ -20,7 +20,7 @@ func Create(payload structs.CreateUser) (structs.GetUser, error) {
 		return structs.GetUser{}, err
 	}
 
-	res := db.DB.Create(&user)
+	res := database.DB.Create(&user)
 
 	if res.Error != nil {
 		return structs.GetUser{}, res.Error

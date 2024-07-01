@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	service "github.com/go-project/app/user/service"
+	"github.com/go-project/app/user/service"
 )
 
 func delete(c *gin.Context) {

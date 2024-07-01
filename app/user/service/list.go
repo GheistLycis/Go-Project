@@ -1,8 +1,8 @@
 package service
 
 import (
-	structs "github.com/go-project/app/user/structs"
-	db "github.com/go-project/database"
+	"github.com/go-project/app/user/structs"
+	"github.com/go-project/database"
 )
 
 /*
@@ -11,7 +11,7 @@ List is the usecase for listing users from the database.
 func List() ([]structs.ListUser, error) {
 	users := []structs.User{}
 
-	if res := db.DB.Find(&users); res.Error != nil {
+	if res := database.DB.Find(&users); res.Error != nil {
 		return nil, res.Error
 	}
 

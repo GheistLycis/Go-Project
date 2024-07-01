@@ -1,6 +1,6 @@
 package service
 
-import structs "github.com/go-project/app/user/structs"
+import "github.com/go-project/app/user/structs"
 
 /*
 Delete is the usecase for soft-deleting an user in the database.

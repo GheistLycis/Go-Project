@@ -5,10 +5,10 @@ import (
 	"log"
 	"os"
 
-	structs "github.com/go-project/app/user/structs"
-	godotenv "github.com/joho/godotenv"
-	postgres "gorm.io/driver/postgres"
-	gorm "gorm.io/gorm"
+	"github.com/go-project/app/user/structs"
+	"github.com/joho/godotenv"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
