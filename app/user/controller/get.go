@@ -10,14 +10,21 @@ import (
 
 func get(c *gin.Context) {
 	ID := c.Param("id")
+	IDint, err := strconv.Atoi(ID)
 
-	if IDint, err := strconv.Atoi(ID); err != nil {
+	if err != nil {
 		c.JSON(http.StatusBadRequest, "ID inválido")
-	} else {
-		user := service.Get(IDint)
-
-		c.JSON(http.StatusOK, user)
+		return
 	}
+
+	user, err := service.Get(IDint)
+
+	if err != nil {
+		c.JSON(http.StatusNotFound, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
 }
 
 func list(c *gin.Context) {
