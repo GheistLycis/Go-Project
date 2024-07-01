@@ -28,7 +28,11 @@ func get(c *gin.Context) {
 }
 
 func list(c *gin.Context) {
-	users := service.List()
+	users, err := service.List()
+
+	if err != nil {
+		c.JSON(http.StatusNotFound, err.Error())
+	}
 
 	c.JSON(http.StatusOK, users)
 }
